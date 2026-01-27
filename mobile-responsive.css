@@ -1,0 +1,216 @@
+/* ========================================
+   MOBILE RESPONSIVE CSS
+   Add this as a separate file
+   Link it AFTER all other CSS files
+======================================== */
+
+/* ========================================
+   MOBILE MENU BUTTON - ONLY SHOW ON MOBILE
+======================================== */
+@media (min-width: 1024px) {
+    /* Hide on desktop */
+    .mobile-menu-btn {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1023px) {
+    /* Show on tablet/mobile */
+    .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: #14b8a6;
+        font-size: 1.8rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        position: relative;
+        z-index: 1001;
+    }
+    
+    /* Hide desktop navigation on mobile */
+    nav .nav-links {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 3rem 2rem;
+        gap: 2rem;
+        overflow-y: auto;
+    }
+    
+    /* Show when active */
+    nav .nav-links.active {
+        display: flex;
+    }
+    
+    /* Mobile menu items */
+    nav .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav .nav-links a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Header adjustments */
+    header {
+        padding: 1rem 1.5rem !important;
+    }
+    
+    nav {
+        position: relative;
+    }
+}
+
+/* ========================================
+   HERO SECTION - MOBILE
+======================================== */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 80vh;
+        margin-top: 70px !important;
+    }
+    
+    .hero-content {
+        padding: 2rem 1.5rem !important;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem !important;
+        line-height: 1.3;
+    }
+    
+    .hero p {
+        font-size: 1rem !important;
+    }
+    
+    .hero-buttons {
+        flex-direction: column !important;
+        gap: 1rem;
+        width: 100%;
+    }
+    
+    .hero-buttons a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ========================================
+   SERVICES SECTION - MOBILE
+======================================== */
+@media (max-width: 768px) {
+    .services {
+        padding: 4rem 1.5rem !important;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        padding: 2rem 1.5rem !important;
+    }
+}
+
+/* ========================================
+   STORY SECTION - MOBILE
+======================================== */
+@media (max-width: 1023px) {
+    .story-section {
+        min-height: 2800vh !important;
+    }
+    
+    .story-container {
+        grid-template-columns: 1fr !important;
+        padding: 0 1.5rem !important;
+        gap: 2rem;
+    }
+    
+    .story-images-wrapper {
+        height: 50vh !important;
+        order: 1;
+    }
+    
+    .story-content-wrapper {
+        order: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .story-section {
+        min-height: 3200vh !important;
+    }
+    
+    .story-images-wrapper {
+        height: 45vh !important;
+    }
+    
+    .story-content h2 {
+        font-size: 2rem !important;
+    }
+    
+    .story-content p {
+        font-size: 0.95rem !important;
+    }
+}
+
+/* ========================================
+   FAQ SECTION - MOBILE
+======================================== */
+@media (max-width: 768px) {
+    .faq {
+        padding: 4rem 1.5rem !important;
+    }
+    
+    .faq-question {
+        font-size: 0.95rem !important;
+        padding: 1rem 1.2rem !important;
+    }
+    
+    .faq-answer {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* ========================================
+   STATS SECTION - MOBILE
+======================================== */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ========================================
+   SECTION HEADERS - MOBILE
+======================================== */
+@media (max-width: 768px) {
+    .section-header h2 {
+        font-size: 2.5rem !important;
+    }
+    
+    .section-header p {
+        font-size: 1rem !important;
+    }
+}
