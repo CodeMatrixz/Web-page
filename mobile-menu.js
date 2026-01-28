@@ -1,119 +1,96 @@
 /* ========================================
-   MOBILE MENU JAVASCRIPT - mobile-menu.js
-======================================== */
+   MOBILE MENU JAVASCRIPT
+   Handles hamburger menu functionality
+   ======================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-    const body = document.body;
 
-    // Toggle mobile menu
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            mobileMenuBtn.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            
-            // Prevent body scroll when menu is open
-            if (navLinks.classList.contains('active')) {
-                body.style.overflow = 'hidden';
-            } else {
-                body.style.overflow = 'auto';
-            }
-        });
+    // Check if elements exist
+    if (!mobileMenuBtn || !navLinks) {
+        console.warn('Mobile menu elements not found. Make sure HTML has:');
+        console.warn('- <button class="mobile-menu-btn">');
+        console.warn('- <ul class="nav-links">');
+        return;
     }
 
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (navLinks.classList.contains('active')) {
-            if (!e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-                body.style.overflow = 'auto';
-            }
-        }
+    // ========================================
+    // TOGGLE MENU ON HAMBURGER CLICK
+    // ========================================
+    mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+        
+        // Update button appearance (optional)
+        mobileMenuBtn.classList.toggle('open');
     });
 
-    // Close menu when clicking on a link
-    const navLinkItems = document.querySelectorAll('.nav-links a');
-    navLinkItems.forEach(link => {
+    // ========================================
+    // CLOSE MENU WHEN CLICKING ON LINKS
+    // ========================================
+    const navLinks_all = navLinks.querySelectorAll('a');
+    navLinks_all.forEach(link => {
         link.addEventListener('click', function() {
-            // If it's not a dropdown toggle, close the menu
-            if (!this.parentElement.classList.contains('has-dropdown')) {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-                body.style.overflow = 'auto';
-            }
+            navLinks.classList.remove('active');
+            mobileMenuBtn.classList.remove('open');
         });
     });
 
-    // Handle dropdown menus on mobile
-    const dropdownItems = document.querySelectorAll('.has-dropdown');
-    dropdownItems.forEach(item => {
-        const link = item.querySelector('a');
-        if (link) {
-            link.addEventListener('click', function(e) {
-                // Only prevent default on mobile/tablet
-                if (window.innerWidth <= 1024) {
-                    e.preventDefault();
-                    item.classList.toggle('active');
-                }
-            });
-        }
-    });
-
-    // Close dropdowns when screen is resized to desktop
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 1024) {
+    // ========================================
+    // CLOSE MENU WHEN CLICKING OUTSIDE
+    // ========================================
+    document.addEventListener('click', function(e) {
+        // If clicking outside menu and button, close menu
+        if (!e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
             navLinks.classList.remove('active');
-            mobileMenuBtn.classList.remove('active');
-            body.style.overflow = 'auto';
-            
-            // Remove active state from dropdowns
-            dropdownItems.forEach(item => {
-                item.classList.remove('active');
-            });
+            mobileMenuBtn.classList.remove('open');
         }
     });
 
-    // Keyboard accessibility - Close menu on Escape key
+    // ========================================
+    // CLOSE MENU ON ESC KEY
+    // ========================================
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        if (e.key === 'Escape') {
             navLinks.classList.remove('active');
-            mobileMenuBtn.classList.remove('active');
-            body.style.overflow = 'auto';
-            mobileMenuBtn.focus();
+            mobileMenuBtn.classList.remove('open');
         }
     });
 
-    // Handle scroll behavior
-    let lastScrollTop = 0;
-    const header = document.querySelector('header');
-
-    window.addEventListener('scroll', function() {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Close mobile menu on scroll
-        if (Math.abs(scrollTop - lastScrollTop) > 50) {
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-                body.style.overflow = 'auto';
-            }
+    // ========================================
+    // HANDLE WINDOW RESIZE
+    // Close menu if window is resized to desktop size
+    // ========================================
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            // On desktop, always ensure menu is visible
+            navLinks.classList.remove('active');
+            mobileMenuBtn.classList.remove('open');
         }
-        
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     });
+
+    // ========================================
+    // PREVENT BODY SCROLL WHEN MENU IS OPEN (Optional)
+    // ========================================
+    mobileMenuBtn.addEventListener('click', function() {
+        if (navLinks.classList.contains('active')) {
+            // Menu is now open
+            document.body.style.overflow = 'hidden';
+        } else {
+            // Menu is now closed
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Restore scroll when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    console.log('✓ Mobile menu initialized successfully');
+    console.log('- Hamburger button:', mobileMenuBtn);
+    console.log('- Navigation menu:', navLinks);
 });
-
-// ========================================
-// HELPER: Close mobile menu programmatically
-// ========================================
-function closeMobileMenu() {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    
-    navLinks.classList.remove('active');
-    mobileMenuBtn.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
