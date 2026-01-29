@@ -736,8 +736,7 @@
     src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
       format('woff2');
   }
-  
-  /* END PERPLEXITY DESIGN SYSTEM */
+
   /* ========================================
      MOBILE RESPONSIVE.CSS - FIXED VERSION
   ======================================== */
@@ -1144,51 +1143,6 @@
   .nav-links a {
       transition: all var(--duration-normal) var(--ease-standard) !important;
   }
-  /* FIX: ABOUT & STORY SECTIONS - Mobile Alignment */
-@media (max-width: 768px) {
-    .about, .about-section, .story, .story-section,
-    .about-us, .our-story, #about, #story,
-    [class*="about"], [class*="story"] {
-        padding: 30px 15px !important;
-        width: 100% !important;
-        margin: 0 auto !important;
-    }
-
-    .about .container, .story .container,
-    .about-section .container, .story-section .container {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 0 15px !important;
-    }
-
-    .about h1, .story h1,
-    .about h2, .story h2,
-    .about h3, .story h3,
-    [class*="about"] h1, [class*="story"] h1 {
-        font-size: clamp(1.25rem, 5vw, 2rem) !important;
-        margin: 0 0 15px 0 !important;
-        text-align: left !important;
-    }
-
-    .about p, .story p,
-    [class*="about"] p, [class*="story"] p {
-        font-size: clamp(0.875rem, 3vw, 1rem) !important;
-        line-height: 1.6 !important;
-        text-align: left !important;
-    }
-
-    .about img, .story img,
-    [class*="about"] img, [class*="story"] img {
-        max-width: 100% !important;
-        height: auto !important;
-        margin: 15px 0 !important;
-    }
-
-    .two-column > div, .row-2 > div,
-    [class*="col-"] > div, [class*="grid"] > div {
-        width: 100% !important;
-    }
-}
 
   /* ========================================
      ACCESSIBILITY
