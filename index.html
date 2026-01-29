@@ -2703,37 +2703,309 @@ a[href="#top"],
     </section>
     
 
-     <!-- About Us -->
-     <section id="about" class="about">
-        <div class="about-container">
-            <div class="about-content">
-                <h2>About Code Matrixz</h2>
-                <p>We are a leading software development company dedicated to transforming businesses through innovative technology solutions. With over a decade of experience, we've helped hundreds of companies achieve their digital transformation goals.</p>
-                <p>Our team of expert developers, designers and consultants work together to deliver cutting-edge solutions that drive growth, efficiency and competitive advantage.</p>
-                <div class="about-features">
-                    <div class="about-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>3+ Years Experience</span>
-                    </div>
-                    <div class="about-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Skilled Professionals</span>
-                    </div>
-                    <div class="about-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>24/7 Support</span>
-                    </div>
-                    <div class="about-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Customer Centric Approach</span>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600" alt="Team" style="width:100%; border-radius:20px;">
-            </div>
-        </div>
-    </section>
+    /* ========================================
+   ABOUT SECTION - MOBILE OPTIMIZED
+   ======================================== */
+
+.about-section {
+    padding: var(--space-32) var(--space-16);
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(13, 148, 136, 0.02));
+}
+
+/* Header */
+.about-header {
+    text-align: center;
+    margin-bottom: var(--space-32);
+}
+
+.about-header h2 {
+    font-size: var(--font-size-2xl);
+    color: var(--color-text);
+    margin-bottom: var(--space-16);
+}
+
+.about-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--color-primary);
+    margin: 0 auto;
+    border-radius: var(--radius-full);
+}
+
+/* Grid - Stacked on Mobile */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-32);
+}
+
+.about-image {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-lg);
+}
+
+/* Text Content */
+.about-text h3 {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary);
+    margin-top: var(--space-24);
+    margin-bottom: var(--space-12);
+}
+
+.about-text h3:first-child {
+    margin-top: 0;
+}
+
+.about-text p {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--space-16);
+}
+
+/* List with Checkmarks */
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-16) 0 var(--space-24) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+}
+
+.about-list li {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-md);
+    color: var(--color-text);
+    padding-left: var(--space-32);
+    position: relative;
+}
+
+.about-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-block;
+    padding: var(--space-12) var(--space-24);
+    background: var(--color-primary);
+    color: var(--color-btn-primary-text);
+    border-radius: var(--radius-base);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    transition: all var(--duration-normal) var(--ease-standard);
+    margin-top: var(--space-16);
+}
+
+.cta-button:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   5-INCH PHONE OPTIMIZATION (360px - 480px)
+   ======================================== */
+
+@media (max-width: 480px) {
+    .about-section {
+        padding: var(--space-24) var(--space-12);
+    }
+
+    .about-header h2 {
+        font-size: clamp(var(--font-size-xl), 5vw, var(--font-size-2xl));
+        margin-bottom: var(--space-12);
+    }
+
+    .about-divider {
+        width: 50px;
+        height: 2px;
+    }
+
+    /* Image - Optimized for 5-inch */
+    .about-image {
+        border-radius: var(--radius-md);
+        aspect-ratio: 16 / 12;
+    }
+
+    /* Text - Better readability */
+    .about-text h3 {
+        font-size: clamp(var(--font-size-md), 4.5vw, var(--font-size-lg));
+        margin-top: var(--space-16);
+        margin-bottom: var(--space-8);
+    }
+
+    .about-text h3:first-child {
+        margin-top: 0;
+    }
+
+    .about-text p {
+        font-size: clamp(var(--font-size-sm), 3.5vw, var(--font-size-base));
+        margin-bottom: var(--space-12);
+    }
+
+    /* List - Compact */
+    .about-list {
+        gap: var(--space-10);
+        margin: var(--space-12) 0 var(--space-16) 0;
+    }
+
+    .about-list li {
+        font-size: clamp(var(--font-size-xs), 3.5vw, var(--font-size-sm));
+        padding-left: var(--space-24);
+    }
+
+    /* Button - Full width on mobile */
+    .cta-button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: var(--space-12) var(--space-16);
+        font-size: clamp(var(--font-size-sm), 3.5vw, var(--font-size-base));
+    }
+
+    .cta-button:active {
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   TINY PHONE (320px - 360px)
+   ======================================== */
+
+@media (max-width: 360px) {
+    .about-section {
+        padding: var(--space-20) var(--space-8);
+    }
+
+    .about-header h2 {
+        font-size: clamp(var(--font-size-lg), 6vw, var(--font-size-xl));
+        margin-bottom: var(--space-8);
+    }
+
+    .about-divider {
+        width: 40px;
+    }
+
+    .about-image {
+        aspect-ratio: 1 / 0.8;
+        border-radius: var(--radius-sm);
+    }
+
+    .about-text h3 {
+        font-size: clamp(var(--font-size-sm), 4.8vw, var(--font-size-md));
+        margin-top: var(--space-12);
+        margin-bottom: var(--space-6);
+    }
+
+    .about-text p {
+        font-size: clamp(var(--font-size-xs), 3.2vw, var(--font-size-sm));
+        margin-bottom: var(--space-10);
+    }
+
+    .about-list {
+        margin: var(--space-10) 0 var(--space-12) 0;
+        gap: var(--space-8);
+    }
+
+    .about-list li {
+        font-size: clamp(var(--font-size-xs), 3vw, var(--font-size-sm));
+        padding-left: var(--space-20);
+    }
+
+    .cta-button {
+        padding: var(--space-10) var(--space-12);
+        font-size: clamp(var(--font-size-xs), 3vw, var(--font-size-sm));
+    }
+}
+
+/* ========================================
+   TABLET (769px - 1024px)
+   ======================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .about-section {
+        padding: var(--space-40) var(--space-24);
+    }
+
+    .about-header h2 {
+        font-size: var(--font-size-3xl);
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-40);
+        align-items: center;
+    }
+
+    .about-image {
+        max-height: 400px;
+    }
+
+    .about-text h3 {
+        font-size: var(--font-size-xl);
+        margin-top: var(--space-32);
+    }
+
+    .cta-button {
+        padding: var(--space-14) var(--space-28);
+    }
+}
+
+/* ========================================
+   DESKTOP (1025px+)
+   ======================================== */
+
+@media (min-width: 1025px) {
+    .about-section {
+        padding: var(--space-48) var(--space-32);
+    }
+
+    .about-header h2 {
+        font-size: var(--font-size-4xl);
+        margin-bottom: var(--space-24);
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr 1.1fr;
+        gap: var(--space-48);
+        align-items: center;
+    }
+
+    .about-image {
+        max-height: 500px;
+    }
+
+    .about-text h3 {
+        font-size: var(--font-size-2xl);
+        margin-top: var(--space-32);
+    }
+
+    .about-text p {
+        font-size: var(--font-size-lg);
+        line-height: 1.6;
+    }
+
+    .cta-button {
+        padding: var(--space-16) var(--space-32);
+        font-size: var(--font-size-lg);
+    }
+}
+
 
     
     <!-- Stats Section -->
